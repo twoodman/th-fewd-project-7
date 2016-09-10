@@ -1,2 +1,11 @@
 // colours
-$color-black : #111111;
+$color-black : #111111; // used in text
+$color-blue : #4b77be; // used in transcript hover
+$color-gold : #FFA400; // used in video player colours & .highlight text
+$color-gold-hover : #F9690E; // orange-ish, used in hover text that has .highlight class
+
+// fonts
+$base-font-size : 16px;
+
+// font stacks
+$sans-stack : sans-serif;

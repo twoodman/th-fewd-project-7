@@ -60,6 +60,7 @@ html, body {
   height: 100%;
   padding: 0;
   margin: 0;
+  font-size: 16px;
 }
 
 /* MAIN STYLES */
@@ -76,4 +77,24 @@ html, body {
 .main__transcript {
   min-height: 400px;
   width: 100%;
+  padding: 15px;
+}
+.main__transcript p {
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: 1.2em;
+  margin-bottom: 60px;
+}
+.main__transcript span {
+  cursor: pointer;
+  color: #111111;
+}
+.main__transcript span:hover {
+  color: #4b77be;
+}
+.main__transcript span.highlight {
+  color: #FFA400;
+}
+.main__transcript span.highlight:hover {
+  color: #F9690E;
 }

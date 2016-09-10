@@ -1,4 +1,24 @@
 .main__transcript {
   min-height: 400px;
   width: 100%;
+  padding: 15px;
+  p {
+    font-family: $sans-stack;
+    font-size: $base-font-size;
+    line-height: 1.2em;
+    margin-bottom: 60px;
+  }
+  span {
+    cursor: pointer;
+    color: $color-black;
+    &:hover {
+      color: $color-blue;
+    }
+    &.highlight {
+      color: $color-gold;
+      &:hover {
+        color: $color-gold-hover;
+      }
+    }
+  }
 }
