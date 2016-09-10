@@ -19,10 +19,10 @@
 
 
 ##### To Do:
-- Embed video using HTML
-- Check that video works in at least three modern browsers
-- Add transcript below video (as shown in mockup)
-- Style page using mockups
+- ~~Embed video using HTML~~ done
+- ~~Check that video works in at least three modern browsers~~ done
+- ~~Add transcript below video (as shown in mockup)~~ done
+- ~~Style page using mockups~~ done
 - Implement play/pause buttons
 - Add volume button - should allow you to also mute/unmute sound
 - Implement fullscreen button
@@ -35,6 +35,7 @@
 - As playback time changes, sentences in transcript should highlight
   - Use JS to listen for changes and apply highlight to appropriate sentence
   - Use captions.vtt file to see times at which words are spoken in video
+  - Make sure to remove default prop on track tag
 - Note in comments (and here) which browsers tested on
 - Validate HTML/CSS
 - Check for issues/Validate JS (JSHint)
