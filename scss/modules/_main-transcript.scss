@@ -1,12 +1,12 @@
 .main__transcript {
   min-height: 400px;
   width: 100%;
-  padding: 15px;
   p {
     font-family: $sans-stack;
     font-size: $base-font-size;
     line-height: 1.2em;
     margin-bottom: 60px;
+    padding: 10px;
   }
   span {
     cursor: pointer;

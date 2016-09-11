@@ -3,15 +3,28 @@
 <head>
   <meta charset="utf-8">
   <title>Interactive Video Player</title>
-  <link rel="stylesheet" href="dist/application.min.css"/>
+  <link rel="stylesheet" href="dist/application.min.css">
 </head>
 <body>
   <div class="main">
-    <video class="main__player">
+
+    <video class="player">
       <source src="video/video.mp4" type="video/mp4"/>
       <source src="video/video.ogg" type="video/ogg"/>
-      <track label="English" kind="subtitles" srclang="en" src="video/captions.vtt" default/>
+      <track label="English" kind="subtitles" srclang="en" src="video/captions.vtt" default>
+      <p>Your browser does not support the <code>video</code> tag.</p>
     </video>
+
+    <div class="player__buttons">
+      <button class="btn__restart">rst</button>
+      <span class="btn__rewinds">
+        <button class="rewind__30">-30</button>
+        <button class="rewind__20">-20</button>
+        <button class="rewind__10">-10</button>
+      </span>
+      <button class="btn__play">play</button>
+    </div>
+
     <div class="main__transcript">
       <!-- PARAGRAPH 1 -->
       <p>
@@ -75,5 +88,6 @@
       </p>
     </div>
   </div>
+<script src="javascripts/player.js"></script>
 </body>
 </html>
