@@ -43,7 +43,10 @@
 
 ##### Exceeds Expectations:
 - Embed .vtt file as CC track and add button to toggle captions
-- Creative and thoughtful responsive design
+- Creative and thoughtful responsive design. I did this by:
+  - ~~Keeping buttons visible rather than fade them as mouseover and leave on player~~
+  - ~~Keeping browser focus border rather than try and remove that~~
+  - ~~Making the buttons easy to click/tap (big)~~
 - Playback speed control OR other helpful controls (jump back 10/30seconds?)
 - ~~Add restart button for fun~~ done
 - Volume control on viewer
