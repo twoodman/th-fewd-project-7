@@ -5,6 +5,7 @@
   const videoPlayer = document.querySelector('.player')
   const playerRestart = document.querySelector('.btn__restart')
   const playerRewind = document.querySelector('.btn__rewind')
+  const playerForward = document.querySelector('.btn__forward')
   const playerPlay = document.querySelector('.btn__play')
 
   // // only show player controls on videoplayer hover
@@ -24,8 +25,8 @@
   //   }
   // }, false);
 
-  // play & pause click event
-  playerPlay.addEventListener('click', () => {
+  // play function
+  function playVideo () {
     if (videoPlayer.paused) {
       videoPlayer.play()
       playerPlay.classList.remove('btn__play--play')
@@ -35,6 +36,16 @@
       playerPlay.classList.remove('btn__play--pause')
       playerPlay.classList.add('btn__play--play')
     }
+  }
+
+  // play & pause click event on play button
+  playerPlay.addEventListener('click', () => {
+    playVideo()
+  }, false)
+
+  // play & pause click event on player
+  videoPlayer.addEventListener('click', () => {
+    playVideo()
   }, false)
 
   // restart click event
@@ -42,8 +53,13 @@
     videoPlayer.currentTime = 0
   }, false)
 
-  // // rewind event
+  // rewind event
   playerRewind.addEventListener('click', () => {
-    videoPlayer.currentTime = videoPlayer.currentTime - 10
+    videoPlayer.currentTime -= 10
   }, false)
-})()
+
+  // fast forward event
+  playerForward.addEventListener('click', () => {
+    videoPlayer.currentTime += 10
+  }, false)
+}())

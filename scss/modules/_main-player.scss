@@ -1,3 +1,7 @@
+%btn-ex {
+  background-repeat: no-repeat;
+  background-position: center;
+}
 video {
   width: 100%;
   height: auto;
@@ -14,16 +18,18 @@ video {
   top: -5px;
   margin-bottom: 15px;
   button {
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    padding: 0;
+    border: none;
     &.btn__play {
       background: url('../icons/play-icon.png');
       background-repeat: no-repeat;
       background-position: center;
-      display: inline-block;
-      width: 50px;
-      height: 50px;
-      margin: 5px;
-      padding: 0;
-      border: none;
       &.btn__play--play {
         background: url('../icons/play-icon.png');
         background-repeat: no-repeat;
@@ -39,23 +45,16 @@ video {
       background: url('../icons/restart-icon.png');
       background-repeat: no-repeat;
       background-position: center;
-      display: inline-block;
-      width: 50px;
-      height: 50px;
-      margin: 5px;
-      padding: 0;
-      border: none;
     }
     &.btn__rewind {
       background: url('../icons/rewind-icon.png');
       background-repeat: no-repeat;
       background-position: center;
-      display: inline-block;
-      width: 50px;
-      height: 50px;
-      margin: 5px;
-      padding: 0;
-      border: none;
+    }
+    &.btn__forward {
+      background: url('../icons/forward-icon.png');
+      background-repeat: no-repeat;
+      background-position: center;
     }
   }
 }

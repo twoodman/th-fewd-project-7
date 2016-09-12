@@ -64,7 +64,7 @@ html, body {
 }
 
 body {
-  background: #044F67;
+  background: #F62459;
   height: 100%;
 }
 
@@ -98,8 +98,7 @@ video {
   top: -5px;
   margin-bottom: 15px;
 }
-.player__buttons button.btn__play {
-  background: url("../icons/play-icon.png");
+.player__buttons button {
   background-repeat: no-repeat;
   background-position: center;
   display: inline-block;
@@ -108,6 +107,11 @@ video {
   margin: 5px;
   padding: 0;
   border: none;
+}
+.player__buttons button.btn__play {
+  background: url("../icons/play-icon.png");
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .player__buttons button.btn__play.btn__play--play {
   background: url("../icons/play-icon.png");
@@ -123,23 +127,16 @@ video {
   background: url("../icons/restart-icon.png");
   background-repeat: no-repeat;
   background-position: center;
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  margin: 5px;
-  padding: 0;
-  border: none;
 }
 .player__buttons button.btn__rewind {
   background: url("../icons/rewind-icon.png");
   background-repeat: no-repeat;
   background-position: center;
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  margin: 5px;
-  padding: 0;
-  border: none;
+}
+.player__buttons button.btn__forward {
+  background: url("../icons/forward-icon.png");
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .main__transcript {
