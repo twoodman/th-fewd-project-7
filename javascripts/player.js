@@ -4,7 +4,7 @@
   // store player and all buttons in consts
   const videoPlayer = document.querySelector('.player')
   const playerRestart = document.querySelector('.btn__restart')
-  // const playerRewind = document.querySelector('.btn__rewind')
+  const playerRewind = document.querySelector('.btn__rewind')
   const playerPlay = document.querySelector('.btn__play')
 
   // // only show player controls on videoplayer hover
@@ -43,7 +43,7 @@
   }, false)
 
   // // rewind event
-  // playerRewind.addEventListener('click' () => {
-  //   videoPlayer.currentTime -= 10
-  // }, false)
+  playerRewind.addEventListener('click', () => {
+    videoPlayer.currentTime = videoPlayer.currentTime - 10
+  }, false)
 })()
