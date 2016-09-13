@@ -47,6 +47,7 @@
   - ~~Keeping buttons visible rather than fade them as mouseover and leave on player~~ **done**
   - ~~Keeping browser focus border rather than try and remove that~~ **done**
   - ~~Making the buttons easy to click/tap (BIIIIIIIIG)~~ **done**
+  - ~~Adding a mute button?~~ **done**
 - ~~Playback speed control OR other helpful controls (jump back 10/30seconds?)~~ **done, 10 sec rewind**
 - ~~Add restart button for fun~~ **done**
 - Volume control on viewer
