@@ -1,5 +1,5 @@
 // iife
-(function () {
+(() => {
   'use strict'
   // store player and all buttons/inputs in consts
   const videoPlayer = document.querySelector('.player')
@@ -17,14 +17,12 @@
       // play it
       videoPlayer.play()
       // change the play button icons to reflect that
-      playerPlay.classList.remove('btn__play--play')
       playerPlay.classList.add('btn__play--pause')
     } else {
       // else pause it
       videoPlayer.pause()
       // and again change the button icons
       playerPlay.classList.remove('btn__play--pause')
-      playerPlay.classList.add('btn__play--play')
     }
   }
 
@@ -63,12 +61,10 @@
     if (videoPlayer.muted === false) {
       videoPlayer.muted = true
       // remove & add classes for button icon
-      playerMute.classList.remove('btn__mute--nonmuted')
       playerMute.classList.add('btn__mute--muted')
     } else {
       videoPlayer.muted = false
       playerMute.classList.remove('btn__mute--muted')
-      playerMute.classList.add('btn__mute--unmuted')
     }
   }, false)
 
@@ -78,6 +74,8 @@
     let time = videoPlayer.duration * (playerBar.value / 100)
     // update the time on video
     videoPlayer.currentTime = time
+    videoPlayer.play()
+    playerPlay.classList.add('btn__play--pause')
   }, false)
 
   // seek bar event listener (as video plays)
@@ -88,11 +86,19 @@
     playerBar.value = value
   }, false)
 
+  // check if video has reached end
+  videoPlayer.addEventListener('ended', () => {
+    // set play button icon to default paused state
+    playerPlay.classList.remove('btn__play--pause')
+    // reset video to start
+    videoPlayer.currentTime = 0
+  }, false)
+
   // skipping while seeking fix
   playerBar.addEventListener('mousedown', () => {
     videoPlayer.pause()
-  })
+  }, false)
   playerBar.addEventListener('mouseup', () => {
     videoPlayer.play()
-  })
-}())
+  }, false)
+})()
