@@ -30,7 +30,7 @@ browsers~~ **done**
 - ~~Implement playback progress control~~ **done**
   - ~~User should be able to click anywhere on playback bar to
   jump to parts of video~~ **done**
-  - As video plays, playback bar should fill in **done**
+  - ~~As video plays, playback bar should fill in~~ **done**
   - As video plays, current time should be displayed and updated
 - Use JS or CSS to hide/show video player button on mouse over states
   - Only progress bar should remain
