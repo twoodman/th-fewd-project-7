@@ -1,38 +1,64 @@
+// the player
 video {
   width: 100%;
   height: auto;
-  background: $color-black;
+  background: transparent;
 }
-.player__bar-wrap {
+.bar__wrap {
   width: 100%;
   height: 30px;
+  position: relative;
   background: $color-black;
-  margin-top: -7px;
-  .player__bar {
-    background: $color-black;
-    width: 100%;
+  margin-top: -5px;
+  .player__bar-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
     height: 100%;
-    border: none;
-  }
-  input[type=range] {
-    -webkit-appearance: none;
-    border: none;
-    margin: 0;
-  }
-  input[type=range]::-webkit-slider-runnable-track {
     background: $color-body-bg;
-    border: none;
-    margin: 0;
-  }
-  input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    border: none;
-    height: 20px;
-    width: 40px;
-    margin: 0 0 2px 0;
-    background: url('../icons/track-thumb-icon.png') no-repeat center;
+    z-index: 1;
   }
 }
+// seek bar
+input[type=range] {
+  position: relative;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  margin: 0;
+  border: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  // webkit thumb
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 30px;
+    width: 30px;
+    margin: 0;
+    background: $color-gold;
+  }
+  // moz thumb
+  &::-moz-range-thumb {
+    border: none;
+    height: 30px;
+    width: 30px;
+    margin: 0;
+    background: $color-gold;
+  }
+  // ms thumb
+  &::-ms-thumb {
+    border: none;
+    height: 30px;
+    width: 30px;
+    margin: 0;
+    background: $color-gold;
+  }
+}
+// player buttons
 .player__buttons {
   @include single-transition(all, 300ms, ease-out);
   position: relative;
@@ -43,6 +69,7 @@ video {
   background: $color-black;
   top: -5px;
   margin-bottom: 15px;
+  // general button styles
   button {
     display: inline-block;
     width: 50px;
@@ -50,26 +77,30 @@ video {
     margin: 5px;
     padding: 0;
     border: none;
+    // play button
     &.btn__play {
       background: url('../icons/play-icon.png') no-repeat center;
-      &.btn__play--play {
-        background: url('../icons/play-icon.png') no-repeat center;
-      }
+      // pause class
       &.btn__play--pause {
         background: url('../icons/pause-icon.png') no-repeat center;
       }
     }
+    // restart button
     &.btn__restart {
       background: url('../icons/restart-icon.png') no-repeat center;
     }
+    // rewind button
     &.btn__rewind {
       background: url('../icons/rewind-icon.png') no-repeat center;
     }
+    // fast forward button
     &.btn__forward {
       background: url('../icons/forward-icon.png') no-repeat center;
     }
+    // mute button
     &.btn__mute {
       background: url('../icons/mute-icon-nonmuted.png') no-repeat center;
+      // muted class
       &.btn__mute--muted {
         background: url('../icons/mute-icon-muted.png') no-repeat center;
       }

@@ -9,6 +9,7 @@
   const playerPlay = document.querySelector('.btn__play')
   const playerMute = document.querySelector('.btn__mute')
   const playerBar = document.querySelector('.player__bar')
+  const playerBarFill = document.querySelector('.player__bar-fill')
 
   // play function
   function playVideo () {
@@ -84,6 +85,7 @@
     let value = (100 / videoPlayer.duration) * videoPlayer.currentTime
     // set slider to value (current video time)
     playerBar.value = value
+    playerBarFill.style.width = `${playerBar.value}%`
   }, false)
 
   // check if video has reached end
