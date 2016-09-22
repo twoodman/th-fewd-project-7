@@ -11,19 +11,28 @@
   const playerBar = document.querySelector('.player__bar')
   const playerBarFill = document.querySelector('.player__bar-fill')
 
+  // change play button icon
+  let changePlayIcon = () => {
+    if (!videoPlayer.paused) {
+      playerPlay.classList.add('btn__play--pause')
+    } else {
+      playerPlay.classList.remove('btn__play--pause')
+    }
+  }
+
   // play function
-  function playVideo () {
+  let playVideo = () => {
     // if video paused already
     if (videoPlayer.paused) {
       // play it
       videoPlayer.play()
       // change the play button icons to reflect that
-      playerPlay.classList.add('btn__play--pause')
+      changePlayIcon()
     } else {
       // else pause it
       videoPlayer.pause()
       // and again change the button icons
-      playerPlay.classList.remove('btn__play--pause')
+      changePlayIcon()
     }
   }
 
@@ -75,8 +84,7 @@
     let time = videoPlayer.duration * (playerBar.value / 100)
     // update the time on video
     videoPlayer.currentTime = time
-    videoPlayer.play()
-    playerPlay.classList.add('btn__play--pause')
+    playVideo()
   }, false)
 
   // seek bar event listener (as video plays)
@@ -91,16 +99,26 @@
   // check if video has reached end
   videoPlayer.addEventListener('ended', () => {
     // set play button icon to default paused state
-    playerPlay.classList.remove('btn__play--pause')
+    changePlayIcon()
     // reset video to start
     videoPlayer.currentTime = 0
+  }, false)
+
+  playerBar.addEventListener('click', function (el) {
+    let percent = el.offsetX / this.offsetWidth
+    videoPlayer.currentTime = percent * videoPlayer.duration
+    playerBar.value = percent / 100
+    videoPlayer.play()
+    changePlayIcon()
   }, false)
 
   // skipping while seeking fix
   playerBar.addEventListener('mousedown', () => {
     videoPlayer.pause()
+    changePlayIcon()
   }, false)
   playerBar.addEventListener('mouseup', () => {
     videoPlayer.play()
+    changePlayIcon()
   }, false)
 })()
