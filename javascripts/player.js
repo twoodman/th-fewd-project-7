@@ -2,6 +2,7 @@
 (() => {
   'use strict'
   // store player and all buttons/inputs in consts
+  const mainPlayerWrap = document.querySelector('.main__player-wrap')
   const videoPlayer = document.querySelector('.player')
   const playerRestart = document.querySelector('.btn__restart')
   const playerRewind = document.querySelector('.btn__rewind')
@@ -10,6 +11,8 @@
   const playerMute = document.querySelector('.btn__mute')
   const playerBar = document.querySelector('.player__bar')
   const playerBarFill = document.querySelector('.player__bar-fill')
+  const playerToggleSubs = document.querySelector('.btn__subtitles')
+  const playerSubtitles = videoPlayer.textTracks[0]
 
   // change play button icon
   let changePlayIcon = () => {
@@ -35,7 +38,7 @@
       changePlayIcon()
     }
   }
-
+  
   // play & pause click event on play button
   playerPlay.addEventListener('click', () => {
     // call playVideo on play button click
@@ -68,7 +71,7 @@
 
   // mute event
   playerMute.addEventListener('click', () => {
-    if (videoPlayer.muted === false) {
+    if (!videoPlayer.muted) {
       videoPlayer.muted = true
       // remove & add classes for button icon
       playerMute.classList.add('btn__mute--muted')
@@ -104,15 +107,23 @@
     videoPlayer.currentTime = 0
   }, false)
 
+  // check if player bar has been clicked
   playerBar.addEventListener('click', function (el) {
+    // get position of click on bar
     let percent = el.offsetX / this.offsetWidth
+    // set video time to position / duration
     videoPlayer.currentTime = percent * videoPlayer.duration
-    playerBar.value = percent / 100
+    // play it
     videoPlayer.play()
+    // change the play icon to reflect state
     changePlayIcon()
   }, false)
 
-  // skipping while seeking fix
+  /*
+  + skipping while seeking fix
+  + pauses video on mousedown on playerbar
+  + plays video on mouseup
+  */
   playerBar.addEventListener('mousedown', () => {
     videoPlayer.pause()
     changePlayIcon()
@@ -121,4 +132,23 @@
     videoPlayer.play()
     changePlayIcon()
   }, false)
+
+  // subtitles
+  // set subs to hidden immediately
+  playerSubtitles.mode = 'hidden'
+  // on subtitle button click
+  playerToggleSubs.addEventListener('click', () => {
+    // if subs arent hidden
+    if (playerSubtitles.mode !== 'hidden') {
+      // hide them
+      playerSubtitles.mode = 'hidden'
+      // change sub button to reflect state
+      playerToggleSubs.classList.remove('btn__subtitles--showing')
+    } else {
+      // else show them
+      playerSubtitles.mode = 'showing'
+      // and change sub button to reflect state
+      playerToggleSubs.classList.add('btn__subtitles--showing')
+    }
+  })
 })()
