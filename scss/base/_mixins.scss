@@ -1,0 +1,24 @@
+// mixin for video bubttons
+@mixin btn-background($bgImg) {
+  background-image: $bgImg;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+// media query mixins
+@mixin query-550 {
+  @media #{$break-550} {
+    @content;
+  }
+}
+@mixin query-768 {
+  @media #{$break-768} {
+    @content;
+  }
+}
+@mixin query-1024 {
+  @media #{$break-1024} {
+    @content;
+  }
+}

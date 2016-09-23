@@ -84,12 +84,29 @@ video {
   background: transparent;
 }
 
+.main__player-wrap {
+  position: relative;
+}
+
+.player track {
+  position: absolute;
+  bottom: 80px;
+}
+
+.main__player-controls {
+  width: 100%;
+  position: absolute;
+  bottom: 2px;
+}
+.main__player-controls--hidden {
+  display: none;
+}
+
 .bar__wrap {
   width: 100%;
-  height: 30px;
+  height: 20px;
   position: relative;
-  background: #111111;
-  margin-top: -5px;
+  background: rgba(255, 255, 255, 0.7);
 }
 .bar__wrap .player__bar-fill {
   position: absolute;
@@ -97,7 +114,7 @@ video {
   left: 0;
   width: 0%;
   height: 100%;
-  background: #F62459;
+  background: #f8557e;
   z-index: 1;
 }
 
@@ -114,44 +131,50 @@ input[type=range] {
   cursor: pointer;
 }
 input[type=range]::-webkit-slider-thumb {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
   -webkit-appearance: none;
   border: none;
-  height: 30px;
-  width: 30px;
-  margin: 0;
-  background: #FFA400;
+  height: 20px;
+  width: 60px;
+  margin: 0 0 0 -10px;
+  background: #ffffff;
 }
 input[type=range]::-moz-range-thumb {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-appearance: none;
   border: none;
-  height: 30px;
-  width: 30px;
-  margin: 0;
-  background: #FFA400;
+  height: 20px;
+  width: 60px;
+  margin: 0 0 0 -10px;
+  background: #ffffff;
 }
 input[type=range]::-ms-thumb {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-appearance: none;
   border: none;
-  height: 30px;
-  width: 30px;
-  margin: 0;
-  background: #FFA400;
+  height: 20px;
+  width: 60px;
+  margin: 0 0 0 -10px;
+  background: #ffffff;
 }
 
 .player__buttons {
-  -moz-transition: all 300ms ease-out;
-  -o-transition: all 300ms ease-out;
-  -webkit-transition: all 300ms ease-out;
-  transition: all 300ms ease-out;
   position: relative;
   width: 100%;
-  height: 60px;
   margin: 0;
   padding: 0;
-  background: #111111;
-  top: -5px;
-  margin-bottom: 15px;
+  background: rgba(255, 255, 255, 0.5);
+  bottom: 0;
 }
 .player__buttons button {
   display: inline-block;
+  background: transparent;
   width: 50px;
   height: 50px;
   margin: 5px;
@@ -159,25 +182,58 @@ input[type=range]::-ms-thumb {
   border: none;
 }
 .player__buttons button.btn__play {
-  background: url("../icons/play-icon.png") no-repeat center;
+  background-image: url("../icons/play-icon.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
-.player__buttons button.btn__play.btn__play--pause {
-  background: url("../icons/pause-icon.png") no-repeat center;
+.player__buttons button.btn__play--pause {
+  background-image: url("../icons/pause-icon.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 .player__buttons button.btn__restart {
-  background: url("../icons/restart-icon.png") no-repeat center;
+  background-image: url("../icons/restart-icon.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 .player__buttons button.btn__rewind {
-  background: url("../icons/rewind-icon.png") no-repeat center;
+  background-image: url("../icons/rewind-icon.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 .player__buttons button.btn__forward {
-  background: url("../icons/forward-icon.png") no-repeat center;
+  background-image: url("../icons/forward-icon.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 .player__buttons button.btn__mute {
-  background: url("../icons/mute-icon-nonmuted.png") no-repeat center;
+  background-image: url("../icons/mute-icon-nonmuted.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
-.player__buttons button.btn__mute.btn__mute--muted {
-  background: url("../icons/mute-icon-muted.png") no-repeat center;
+.player__buttons button.btn__mute--muted {
+  background-image: url("../icons/mute-icon-muted.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.player__buttons button.btn__subtitles {
+  background-image: url("../icons/cc-icon-off.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.player__buttons button.btn__subtitles--showing {
+  background-image: url("../icons/cc-icon-on.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 .main__transcript {

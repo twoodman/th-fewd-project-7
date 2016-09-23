@@ -5,9 +5,19 @@ $color-body-bg : #F62459; // used in body bg
 $color-blue : #4b77be; // used in transcript hover
 $color-gold : #FFA400; // used in video player colours & .highlight text
 $color-gold-hover : #F9690E; // orange-ish, used in hover text that has .highlight class
+$color-bar-thumb : rgba(255,255,255,0.9);
+$color-bar-bg : rgba(255,255,255,0.7);
+$color-bar-fill : lighten($color-body-bg, 10%);
+$color-bar-buffer : rgba(0,0,0,0.3);
+$color-button-bg : rgba(255,255,255,0.5);
 
 // fonts
 $base-font-size : 16px;
 
 // font stacks
 $sans-stack : sans-serif;
+
+// media breaks
+$break-550 : '(min-width: 550px)';
+$break-768 : '(min-width: 768px)';
+$break-1024 : '(min-width: 1024px)';
