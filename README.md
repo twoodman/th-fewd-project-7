@@ -28,8 +28,8 @@ browsers~~
 - Add volume button - should allow you to also mute/unmute sound
 - Implement fullscreen button
 - ✔️~~Implement playback progress control~~
-  - User should be able to click anywhere on playback bar to
-  jump to parts of video
+  - ✔️~~User should be able to click anywhere on playback bar to
+  jump to parts of video~~
   - ✔️~~As video plays, playback bar should fill in~~
   - As video plays, current time should be displayed and updated
 - Use JS or CSS to hide/show video player button on mouse over states
@@ -46,10 +46,8 @@ browsers~~
 
 
 ##### Exceeds Expectations:
-- Embed .vtt file as CC track and add button to toggle captions
+- ✔️~~Embed .vtt file as CC track and add button to toggle captions~~
 - Creative and thoughtful responsive design. I did this by:
-  - ✔️~~Keeping buttons visible rather than fade them as mouseover and
-  leave on player~~
   - ✔️~~Keeping browser focus border rather than try and remove
   that~~
   - ✔️~~Making the buttons easy to click/tap (BIIIIIIIIG)~~
