@@ -8,24 +8,28 @@
 <body>
   <div class="main">
 
-    <video class="player">
-      <source src="video/video.mp4" type="video/mp4"/>
-      <source src="video/video.ogg" type="video/ogg"/>
-      <track label="English" kind="subtitles" srclang="en" src="video/captions.vtt" default>
-      <p>Your browser does not support the <code>video</code> tag.</p>
-    </video>
+    <div class="main__player-wrap">
+      <video class="player">
+        <source src="video/video.mp4" type="video/mp4"/>
+        <source src="video/video.ogg" type="video/ogg"/>
+        <track label="English" kind="subtitles" srclang="en" src="video/captions.vtt" default>
+        <p>Your browser does not support HTML5 video</p>
+      </video>
+      <div class="main__player-controls">
+        <div class="bar__wrap">
+          <input type="range" class="player__bar" value="0">
+          <div class="player__bar-fill"></div>
+        </div>
 
-    <div class="bar__wrap">
-      <input type="range" class="player__bar" value="0">
-      <div class="player__bar-fill"></div>
-    </div>
-
-    <div class="player__buttons">
-      <button class="btn__restart">&nbsp;</button>
-      <button class="btn__play">&nbsp;</button>
-      <button class="btn__rewind">&nbsp;</button>
-      <button class="btn__forward">&nbsp;</button>
-      <button class="btn__mute">&nbsp;</button>
+        <div class="player__buttons">
+          <button class="btn__restart">&nbsp;</button>
+          <button class="btn__play">&nbsp;</button>
+          <button class="btn__rewind">&nbsp;</button>
+          <button class="btn__forward">&nbsp;</button>
+          <button class="btn__mute">&nbsp;</button>
+          <button class="btn__subtitles">&nbsp;</button>
+        </div>
+      </div>
     </div>
 
     <div class="main__transcript">
