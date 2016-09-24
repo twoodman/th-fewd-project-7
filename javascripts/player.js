@@ -3,6 +3,8 @@
   'use strict'
   // store player and all buttons/inputs in consts
   const mainPlayerWrap = document.querySelector('.main__player-wrap')
+  const playerButtonsWrap = document.querySelector('.player__buttons')
+  const playerSeekWrap = document.querySelector('.bar__wrap')
   const videoPlayer = document.querySelector('.player')
   const playerRestart = document.querySelector('.btn__restart')
   const playerRewind = document.querySelector('.btn__rewind')
@@ -13,6 +15,7 @@
   const playerBarFill = document.querySelector('.player__bar-fill')
   const playerToggleSubs = document.querySelector('.btn__subtitles')
   const playerSubtitles = videoPlayer.textTracks[0]
+  const arraySubtitleSpans = document.querySelectorAll('.transcript__sentence')
 
   // change play button icon
   let changePlayIcon = () => {
@@ -38,7 +41,7 @@
       changePlayIcon()
     }
   }
-  
+
   // play & pause click event on play button
   playerPlay.addEventListener('click', () => {
     // call playVideo on play button click
@@ -151,4 +154,22 @@
       playerToggleSubs.classList.add('btn__subtitles--showing')
     }
   })
+
+  // show controls for 2 secs on window load
+  window.onload = () => {
+    setTimeout(() => {
+      // then hide buttons
+      playerButtonsWrap.classList.add('player__buttons--hidden')
+      // and lower seek bar
+      playerSeekWrap.classList.add('bar__wrap--lowered')
+    }, 2000)
+  }
+  // on player hover show buttons, seek bar moves up with buttons
+  mainPlayerWrap.addEventListener('mouseenter', () => {
+    playerButtonsWrap.classList.remove('player__buttons--hidden')
+  })
+  // on player leave hide buttons, seek bar remains on bottom
+  mainPlayerWrap.addEventListener('mouseleave', () => {
+    playerButtonsWrap.classList.add('player__buttons--hidden')
+  })]
 })()
