@@ -1,5 +1,6 @@
 .main__transcript {
-  min-height: 400px;
+  overflow-y: scroll;
+  height: 200px;
   width: 100%;
   p {
     font-family: $sans-stack;
@@ -14,8 +15,9 @@
     &:hover {
       color: $color-blue;
     }
-    &.highlight {
+    &.highlighted {
       color: $color-gold;
+      text-decoration: underline;
       &:hover {
         color: $color-gold-hover;
       }

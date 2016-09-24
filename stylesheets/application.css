@@ -88,18 +88,11 @@ video {
   position: relative;
 }
 
-.player track {
-  position: absolute;
-  bottom: 80px;
-}
-
 .main__player-controls {
   width: 100%;
   position: absolute;
   bottom: 2px;
-}
-.main__player-controls--hidden {
-  display: none;
+  border-bottom: 3px solid #F9690E;
 }
 
 .bar__wrap {
@@ -114,14 +107,14 @@ video {
   left: 0;
   width: 0%;
   height: 100%;
-  background: #f8557e;
-  z-index: 1;
+  background: #FFA400;
+  z-index: 500;
 }
 
 input[type=range] {
   position: relative;
   top: 0;
-  z-index: 2;
+  z-index: 501;
   width: 100%;
   height: 100%;
   background: transparent;
@@ -138,7 +131,7 @@ input[type=range]::-webkit-slider-thumb {
   border: none;
   height: 20px;
   width: 60px;
-  margin: 0 0 0 -10px;
+  margin: 0;
   background: #ffffff;
 }
 input[type=range]::-moz-range-thumb {
@@ -149,7 +142,7 @@ input[type=range]::-moz-range-thumb {
   border: none;
   height: 20px;
   width: 60px;
-  margin: 0 0 0 -10px;
+  margin: 0;
   background: #ffffff;
 }
 input[type=range]::-ms-thumb {
@@ -160,17 +153,21 @@ input[type=range]::-ms-thumb {
   border: none;
   height: 20px;
   width: 60px;
-  margin: 0 0 0 -10px;
+  margin: 0;
   background: #ffffff;
 }
 
 .player__buttons {
   position: relative;
+  z-index: 200;
   width: 100%;
   margin: 0;
   padding: 0;
   background: rgba(255, 255, 255, 0.5);
   bottom: 0;
+}
+.player__buttons--hidden {
+  display: none;
 }
 .player__buttons button {
   display: inline-block;
@@ -180,6 +177,12 @@ input[type=range]::-ms-thumb {
   margin: 5px;
   padding: 0;
   border: none;
+}
+@media (min-width: 550px) {
+  .player__buttons button {
+    height: 40px;
+    width: 40px;
+  }
 }
 .player__buttons button.btn__play {
   background-image: url("../icons/play-icon.svg");
@@ -237,7 +240,8 @@ input[type=range]::-ms-thumb {
 }
 
 .main__transcript {
-  min-height: 400px;
+  overflow-y: scroll;
+  height: 200px;
   width: 100%;
 }
 .main__transcript p {
@@ -254,9 +258,10 @@ input[type=range]::-ms-thumb {
 .main__transcript span:hover {
   color: #4b77be;
 }
-.main__transcript span.highlight {
+.main__transcript span.highlighted {
   color: #FFA400;
+  text-decoration: underline;
 }
-.main__transcript span.highlight:hover {
+.main__transcript span.highlighted:hover {
   color: #F9690E;
 }
