@@ -171,5 +171,5 @@
   // on player leave hide buttons, seek bar remains on bottom
   mainPlayerWrap.addEventListener('mouseleave', () => {
     playerButtonsWrap.classList.add('player__buttons--hidden')
-  })]
+  })
 })()
