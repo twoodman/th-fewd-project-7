@@ -184,5 +184,8 @@ video {
         @include btn-background(url('../icons/cc-icon-on.svg'));
       }
     }
+    &.btn__fullscreen {
+      @include btn-background(url('../icons/fullscreen-icon.svg'));
+    }
   }
 }

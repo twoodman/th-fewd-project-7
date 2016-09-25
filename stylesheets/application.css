@@ -314,6 +314,12 @@ video {
   background-position: center;
   background-size: contain;
 }
+.player__buttons button.btn__fullscreen {
+  background-image: url("../icons/fullscreen-icon.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
 
 .main__transcript {
   overflow-y: scroll;
