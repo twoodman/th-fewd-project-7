@@ -11,6 +11,7 @@
   const playerForward = document.querySelector('.btn__forward')
   const playerPlay = document.querySelector('.btn__play')
   const playerMute = document.querySelector('.btn__mute')
+  const playerVolume = document.querySelector('.player__volume')
   const playerBar = document.querySelector('.player__bar')
   const playerBarFill = document.querySelector('.player__bar-fill')
   const playerToggleSubs = document.querySelector('.btn__subtitles')
@@ -76,13 +77,34 @@
   playerMute.addEventListener('click', () => {
     if (!videoPlayer.muted) {
       videoPlayer.muted = true
-      // remove & add classes for button icon
+      // add the muted state to mute
       playerMute.classList.add('btn__mute--muted')
+      // set video vovlume and volume bar to 0
+      videoPlayer.volume = 0
+      playerVolume.value = 0
     } else {
       videoPlayer.muted = false
+      // remove the muted state from mute
       playerMute.classList.remove('btn__mute--muted')
+      // set video volume and volume bar to 1
+      videoPlayer.volume = 1
+      playerVolume.value = 1
     }
   }, false)
+
+  // volume change event
+  playerVolume.addEventListener('change', () => {
+    // on change event, modify the video volume
+    videoPlayer.volume = playerVolume.value
+    // if volume bar is all the way left (sound off)
+    if (videoPlayer.volume === 0) {
+      // change the mute btn icon to muted
+      playerMute.classList.add('btn__mute--muted')
+    } else {
+      // else remove the muted icon from mute btn
+      playerMute.classList.remove('btn__mute--muted')
+    }
+  })
 
   // seek bar event listener (change)
   playerBar.addEventListener('change', () => {
