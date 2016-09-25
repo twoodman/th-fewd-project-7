@@ -172,4 +172,28 @@
   mainPlayerWrap.addEventListener('mouseleave', () => {
     playerButtonsWrap.classList.add('player__buttons--hidden')
   })
+
+  // transcript highlighting, on cue change
+  playerSubtitles.addEventListener('cuechange', () => {
+    /*
+    + yes, I could shorten the following to one let but
+    + wanted to show clearly that these are two
+    + different things
+    */
+    // grab the active cue list
+    let activeCueList = playerSubtitles.activeCues
+    // grab the first active cue in the list
+    let activeCue = activeCueList[0]
+    // grab the ID of the active cue
+    let activeCueIndex = activeCue.id
+    // highlight the span that corresponds w/ active cue ID
+    let highlightCurrentCue = () => {
+      arraySubtitleSpans[activeCueIndex - 1].classList.add('highlighted')
+    }
+    highlightCurrentCue()
+    // and remove highlighted class on cue exit
+    activeCue.onexit = () => {
+      arraySubtitleSpans[activeCueIndex - 1].classList.remove('highlighted')
+    }
+  })
 })()
