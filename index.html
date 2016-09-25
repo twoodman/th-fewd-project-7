@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>Interactive Video Player</title>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
   <link rel="stylesheet" href="dist/application.min.css">
 </head>
 <body>
@@ -22,13 +23,18 @@
         </div>
 
         <div class="player__buttons">
-          <button class="btn__restart">&nbsp;</button>
-          <button class="btn__play">&nbsp;</button>
-          <button class="btn__rewind">&nbsp;</button>
-          <button class="btn__forward">&nbsp;</button>
-          <button class="btn__mute">&nbsp;</button>
-          <input class="player__volume" type="range" min="0" max="1" step="0.1" value ="1">
-          <button class="btn__subtitles">&nbsp;</button>
+          <div class="buttons__left">
+            <button class="btn__play">&nbsp;</button>
+            <span class="player__time">00:00 / 00:00</span>
+          </div>
+          <div class="buttons__right">
+            <button class="btn__rewind">&nbsp;</button>
+            <button class="btn__forward">&nbsp;</button>
+            <button class="btn__mute">&nbsp;</button>
+            <input class="player__volume" type="range" min="0" max="1" step="0.1" value ="1">
+            <button class="btn__subtitles">&nbsp;</button>
+            <button class="btn__restart">&nbsp;</button>
+          </div>
         </div>
       </div>
     </div>
@@ -92,6 +98,9 @@
         </span>
       </p>
     </div>
+    <footer>
+      <a href="http://trevorwoodman.me">- trevor woodman 2016 -</a>
+    </footer>
   </div>
 <script src="javascripts/player.js"></script>
 </body>
