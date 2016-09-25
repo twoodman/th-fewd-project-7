@@ -17,6 +17,7 @@
   const playerToggleSubs = document.querySelector('.btn__subtitles')
   const playerSubtitles = videoPlayer.textTracks[0]
   const arraySubtitleSpans = document.querySelectorAll('.transcript__sentence')
+  const playerTimeSpan = document.querySelector('.player__time')
 
   // change play button icon
   let changePlayIcon = () => {
@@ -104,7 +105,7 @@
       // else remove the muted icon from mute btn
       playerMute.classList.remove('btn__mute--muted')
     }
-  })
+  }, false)
 
   // seek bar event listener (change)
   playerBar.addEventListener('change', () => {
@@ -122,6 +123,11 @@
     // set slider to value (current video time)
     playerBar.value = value
     playerBarFill.style.width = `${playerBar.value}%`
+    // update player__time span
+    let roundTwoDecimals = (num) => {
+      return `0:${Math.round((num * 100) / 100).toFixed()}`
+    }
+    playerTimeSpan.textContent = `${roundTwoDecimals(videoPlayer.currentTime)} / ${roundTwoDecimals(videoPlayer.duration)}`
   }, false)
 
   // check if video has reached end
@@ -175,7 +181,7 @@
       // and change sub button to reflect state
       playerToggleSubs.classList.add('btn__subtitles--showing')
     }
-  })
+  }, false)
 
   // show controls for 0.5 secs on window load
   window.onload = () => {
@@ -189,11 +195,11 @@
   // on player hover show buttons, seek bar moves up with buttons
   mainPlayerWrap.addEventListener('mouseenter', () => {
     playerButtonsWrap.classList.remove('player__buttons--hidden')
-  })
+  }, false)
   // on player leave hide buttons, seek bar remains on bottom
   mainPlayerWrap.addEventListener('mouseleave', () => {
     playerButtonsWrap.classList.add('player__buttons--hidden')
-  })
+  }, false)
 
   // transcript highlighting, on cue change
   playerSubtitles.addEventListener('cuechange', () => {
@@ -211,13 +217,14 @@
     // highlight the span that corresponds w/ active cue ID
     let highlightCurrentCue = () => {
       arraySubtitleSpans[activeCueIndex - 1].classList.add('highlighted')
+      arraySubtitleSpans[activeCueIndex - 1].scrollIntoView()
     }
     highlightCurrentCue()
     // and remove highlighted class on cue exit
     activeCue.onexit = () => {
       arraySubtitleSpans[activeCueIndex - 1].classList.remove('highlighted')
     }
-  })
+  }, false)
   // add transcript click jump functionality
   for (let i = 0; i < arraySubtitleSpans.length; i++) {
     // set a data attr to each span
@@ -237,6 +244,6 @@
       */
       let clickedSpanCue = playerSubtitles.cues[arraySubtitleSpans[i].getAttribute('data-index')]
       videoPlayer.currentTime = clickedSpanCue.startTime
-    })
+    }, false)
   }
 })()
