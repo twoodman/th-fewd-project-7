@@ -12,16 +12,13 @@ video {
 .main__player-controls {
   width: 100%;
   position: absolute;
-  bottom: 2px;
-  border-bottom: 3px solid $color-gold-hover;
+  bottom: 0;
+  border-bottom: 3px solid $color-bar-fill;
 }
 // seek bar wrap div
 .bar__wrap {
-  @include query-550 {
-    height: 20px;
-  }
   width: 100%;
-  height: 10px;
+  height: 5px;
   position: relative;
   background: $color-bar-bg;
   // bar fill div
@@ -37,8 +34,8 @@ video {
 }
 // seek bar
 .player__bar {
-  position: relative;
-  top: -3px;
+  position: absolute;
+  top: 0;
   z-index: 501;
   width: 100%;
   height: 100%;
@@ -49,44 +46,26 @@ video {
   cursor: pointer;
   // webkit thumb
   &::-webkit-slider-thumb {
-    @include border-radius();
-    @include query-550 {
-      height: 20px;
-      width: 60px;
-    }
     -webkit-appearance: none;
     border: none;
-    height: 10px;
-    width: 50px;
-    margin: 0;
+    height: 5px;
+    width: 20px;
     background: $color-white;
   }
   // moz thumb
   &::-moz-range-thumb {
-    @include border-radius();
-    @include query-550 {
-      height: 20px;
-      width: 60px;
-    }
     -webkit-appearance: none;
     border: none;
-    height: 10px;
-    width: 50px;
-    margin: 0;
+    height: 5px;
+    width: 20px;
     background: $color-white;
   }
   // ms thumb
   &::-ms-thumb {
-    @include border-radius();
-    @include query-550 {
-      height: 20px;
-      width: 60px;
-    }
     -webkit-appearance: none;
     border: none;
-    height: 10px;
-    width: 50px;
-    margin: 0;
+    height: 5px;
+    width: 20px;
     background: $color-white;
   }
 }
@@ -94,14 +73,14 @@ video {
 .player__volume {
   height: 10px;
   width: 60px;
-  background: $color-red;
+  background: $color-bar-fill;
   margin: 0;
   border: none;
   -webkit-appearance: none;
   cursor: pointer;
-  // webkit thumb
+  // // webkit thumb
   &::-webkit-slider-thumb {
-    @include border-radius();
+    @include border-radius(100%);
     -webkit-appearance: none;
     border: none;
     height: 14px;
@@ -111,7 +90,7 @@ video {
   }
   // moz thumb
   &::-moz-range-thumb {
-    @include border-radius();
+    @include border-radius(100%);
     -webkit-appearance: none;
     border: none;
     height: 14px;
@@ -121,7 +100,7 @@ video {
   }
   // ms thumb
   &::-ms-thumb {
-    @include border-radius();
+    @include border-radius(100%);
     -webkit-appearance: none;
     border: none;
     height: 14px;
@@ -132,6 +111,11 @@ video {
 }
 // player buttons
 .player__buttons {
+  @include display-flex();
+  @include flex-wrap(nowrap);
+  @include flex-direction(row);
+  @include justify-content(space-between);
+  @include align-items(center);
   position: relative;
   z-index: 200;
   width: 100%;
@@ -141,6 +125,15 @@ video {
   bottom: 0;
   &--hidden {
     display: none;
+  }
+  .buttons__left,
+  .buttons_right {
+    display: inline-block;
+    span {
+      color: $color-white;
+      font-size: $base-font-size + 4;
+      margin-left: 10px;
+    }
   }
   // general button styles
   button {

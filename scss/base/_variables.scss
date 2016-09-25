@@ -2,20 +2,20 @@
 $color-black : #111111; // used in text
 $color-white : #ffffff; // used in main bg
 $color-red : #F62459; // used in body bg
-$color-blue : #4b77be; // used in transcript hover
-$color-gold : #FFA400; // used in video player colours & .highlight text
-$color-gold-hover : #F9690E; // orange-ish, used in hover text that has .highlight class
+$color-span : #afafaf; // used in default spans
+$color-span-hover : #4b77be; // used in transcript hover
+$color-span-highlighted : #1f4788;
 $color-bar-thumb : rgba(255,255,255,0.9);
-$color-bar-bg : rgba(255,255,255,0.7);
-$color-bar-fill : $color-gold;
+$color-bar-bg : rgba(255,255,255,0.3);
+$color-bar-fill : #1f4788;
 $color-bar-buffer : rgba(0,0,0,0.3);
-$color-button-bg : rgba(255,255,255,0.5);
+$color-button-bg : rgba(255,255,255,0.0);
 
 // fonts
 $base-font-size : 16px;
 
 // font stacks
-$sans-stack : sans-serif;
+$source-stack : 'Source Sans Pro', sans-serif;
 
 // media breaks
 $break-550 : '(min-width: 550px)';

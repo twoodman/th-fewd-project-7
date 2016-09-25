@@ -8,6 +8,8 @@ html, body {
 }
 
 body {
-  background: $color-blue;
+  @include background-image(linear-gradient(to right, #734b6d, #42275a));
+  $svg-gradient-shim-threshold: 1 !global;
   height: 100%;
+  font-family: $source-stack;
 }

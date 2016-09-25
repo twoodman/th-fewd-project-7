@@ -1,5 +1,6 @@
 /* MAIN STYLES */
 .main {
+  @include single-box-shadow(0, 0, 10px, 0, $color-black);
   width: 100%;
   max-width: 980px;
   height: 100%;

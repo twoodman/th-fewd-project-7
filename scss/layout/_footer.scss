@@ -1,0 +1,14 @@
+footer {
+  width: 100%;
+  text-align: center;
+  background: $color-black;
+  a {
+    font-size: $base-font-size + 4;
+    text-decoration: none;
+    color: $color-white;
+    &:hover {
+      color: $color-red;
+      text-decoration: underline;
+    }
+  }
+}
