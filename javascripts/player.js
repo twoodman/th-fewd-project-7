@@ -125,8 +125,10 @@
     playerBarFill.style.width = `${playerBar.value}%`
     // update player__time span
     let roundTwoDecimals = (num) => {
-      return `0:${Math.round((num * 100) / 100).toFixed()}`
+      // return the number given rounded to two decimal
+      return `0:${Math.floor(num % 60)}`
     }
+    //
     playerTimeSpan.textContent = `${roundTwoDecimals(videoPlayer.currentTime)} / ${roundTwoDecimals(videoPlayer.duration)}`
   }, false)
 
