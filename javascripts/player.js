@@ -198,10 +198,23 @@
   })
   // add transcript click jump functionality
   for (let i = 0; i < arraySubtitleSpans.length; i++) {
+    // set a data attr to each span
     arraySubtitleSpans[i].setAttribute('data-index', i)
+    // set event listener on each span element to listen for click
     arraySubtitleSpans[i].addEventListener('click', function () {
-      let clickedSpan = playerSubtitles.cues[arraySubtitleSpans[i].getAttribute('data-index')]
-      videoPlayer.currentTime = clickedSpan.startTime
+      /*
+      + on click, grab the 'data-index' attr (a number)
+      + from the particular span clicked
+      + and pass it into the index of the cues[] array
+      + which is part of the playerSubtitles, or textTrack[0]
+      + which was grabbed and stored in a const named playerSubtitles
+      + at the to of the script
+      + AND THEN, store all of that in a let called clickedSpanCue
+      + clickedSpanCue holds the CUE that corresponds to the clicked span's
+      + 'data-index' attribute.
+      */
+      let clickedSpanCue = playerSubtitles.cues[arraySubtitleSpans[i].getAttribute('data-index')]
+      videoPlayer.currentTime = clickedSpanCue.startTime
     })
   }
 })()
