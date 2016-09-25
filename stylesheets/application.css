@@ -116,13 +116,14 @@ video {
   width: 100%;
   position: absolute;
   bottom: 0;
-  border-bottom: 3px solid #1f4788;
 }
 
 .bar__wrap {
-  width: 100%;
+  width: 98%;
   height: 5px;
   position: relative;
+  margin: 0 auto;
+  top: -10px;
   background: rgba(255, 255, 255, 0.3);
 }
 .bar__wrap .player__bar-fill {
@@ -225,11 +226,11 @@ video {
   align-items: center;
   position: relative;
   z-index: 200;
-  width: 100%;
-  margin: 0;
+  width: 95%;
+  margin: 0 auto;
   padding: 0;
   background: rgba(255, 255, 255, 0);
-  bottom: 0;
+  bottom: 5px;
 }
 .player__buttons--hidden {
   display: none;
@@ -255,8 +256,8 @@ video {
 }
 @media (min-width: 550px) {
   .player__buttons button {
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
   }
 }
 .player__buttons button.btn__play {
