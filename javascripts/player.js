@@ -155,14 +155,14 @@
     }
   })
 
-  // show controls for 2 secs on window load
+  // show controls for 0.5 secs on window load
   window.onload = () => {
     setTimeout(() => {
       // then hide buttons
       playerButtonsWrap.classList.add('player__buttons--hidden')
       // and lower seek bar
       playerSeekWrap.classList.add('bar__wrap--lowered')
-    }, 2000)
+    }, 500)
   }
   // on player hover show buttons, seek bar moves up with buttons
   mainPlayerWrap.addEventListener('mouseenter', () => {
