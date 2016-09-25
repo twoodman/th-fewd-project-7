@@ -196,4 +196,12 @@
       arraySubtitleSpans[activeCueIndex - 1].classList.remove('highlighted')
     }
   })
+  // add transcript click jump functionality
+  for (let i = 0; i < arraySubtitleSpans.length; i++) {
+    arraySubtitleSpans[i].setAttribute('data-index', i)
+    arraySubtitleSpans[i].addEventListener('click', function () {
+      let clickedSpan = playerSubtitles.cues[arraySubtitleSpans[i].getAttribute('data-index')]
+      videoPlayer.currentTime = clickedSpan.startTime
+    })
+  }
 })()
