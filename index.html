@@ -10,7 +10,7 @@
   <div class="main">
 
     <div class="main__player-wrap">
-      <video class="player">
+      <video class="player" controls preload>
         <source src="video/video.mp4" type="video/mp4"/>
         <source src="video/video.ogg" type="video/ogg"/>
         <track label="English" kind="subtitles" srclang="en" src="video/captions.vtt">
@@ -20,6 +20,7 @@
         <div class="bar__wrap">
           <input type="range" class="player__bar" value="0">
           <div class="player__bar-fill"></div>
+          <div class="player__bar-buffer"></div>
         </div>
 
         <div class="player__buttons">
