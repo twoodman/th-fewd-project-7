@@ -15,10 +15,18 @@
   const playerFullscreen = document.querySelector('.btn__fullscreen')
   const playerBar = document.querySelector('.player__bar')
   const playerBarFill = document.querySelector('.player__bar-fill')
+  const playerBarBuffer = document.querySelector('.player__bar-buffer')
   const playerToggleSubs = document.querySelector('.btn__subtitles')
   const playerSubtitles = videoPlayer.textTracks[0]
   const arraySubtitleSpans = document.querySelectorAll('.transcript__sentence')
   const playerTimeSpan = document.querySelector('.player__time')
+
+  /*
+  + remove default controls with JS
+  + so in the rare event a user has JS disabled
+  + browser will use default controls
+  */
+  videoPlayer.removeAttribute('controls')
 
   // change play button icon
   let changePlayIcon = () => {
@@ -161,9 +169,20 @@
       // return the number given rounded to two decimal
       return `0:${Math.floor(num % 60)}`
     }
-    //
+    // set time content
     playerTimeSpan.textContent = `${roundTwoDecimals(videoPlayer.currentTime)} / ${roundTwoDecimals(videoPlayer.duration)}`
   }, false)
+
+  // buffer functionality
+  videoPlayer.addEventListener('progress', () => {
+    // if buffer length is greater than none
+    if (videoPlayer.buffered.length > 0) {
+      // calculate the percentage of buffered video
+      let percent = (videoPlayer.buffered.end(0) / videoPlayer.duration) * 100
+      // set buffer bar width to grabbed percentage
+      playerBarBuffer.style.width = `${percent}%`
+    }
+  })
 
   // check if video has reached end
   videoPlayer.addEventListener('ended', () => {
