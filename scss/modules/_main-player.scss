@@ -22,7 +22,6 @@ video {
   margin: 0 auto;
   top: -10px;
   background: $color-bar-bg;
-  // closed
   // bar fill div
   .player__bar-fill {
     position: absolute;
@@ -32,6 +31,16 @@ video {
     height: 100%;
     background: $color-bar-fill;
     z-index: 500;
+  }
+  // bar fill div
+  .player__bar-buffer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: $color-bar-buffer;
+    z-index: 499;
   }
 }
 // seek bar
@@ -46,6 +55,26 @@ video {
   border: none;
   -webkit-appearance: none;
   cursor: pointer;
+  // firefox fix
+  &::-moz-range-track {
+    border: inherit;
+    background: transparent;
+  }
+  // IE fix
+  &::-ms-track {
+    border: inherit;
+    color: transparent;
+    background: transparent;
+  }
+  // IE fixesss
+  &::-ms-fill-lower,
+  &::-ms-fill-upper {
+    background: transparent;
+  }
+  // dont display tooltip on IE
+  &::-ms-tooltip {
+    display: none;
+  }
   // webkit thumb
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
@@ -80,6 +109,26 @@ video {
   border: none;
   -webkit-appearance: none;
   cursor: pointer;
+  // firefox fix
+  &::-moz-range-track {
+    border: inherit;
+    background: transparent;
+  }
+  // IE fix
+  &::-ms-track {
+    border: inherit;
+    color: transparent;
+    background: transparent;
+  }
+  // IE fixesss
+  &::-ms-fill-lower,
+  &::-ms-fill-upper {
+    background: transparent;
+  }
+  // dont display tooltip on IE
+  &::-ms-tooltip {
+    display: none;
+  }
   // // webkit thumb
   &::-webkit-slider-thumb {
     @include border-radius(100%);
