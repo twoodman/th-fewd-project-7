@@ -12,6 +12,7 @@
   const playerPlay = document.querySelector('.btn__play')
   const playerMute = document.querySelector('.btn__mute')
   const playerVolume = document.querySelector('.player__volume')
+  const playerFullscreen = document.querySelector('.btn__fullscreen')
   const playerBar = document.querySelector('.player__bar')
   const playerBarFill = document.querySelector('.player__bar-fill')
   const playerToggleSubs = document.querySelector('.btn__subtitles')
@@ -106,6 +107,38 @@
       playerMute.classList.remove('btn__mute--muted')
     }
   }, false)
+
+  // fullscreen button functionality
+  playerFullscreen.addEventListener('click', function () {
+    // on click, toggle temp class
+    this.classList.toggle('enter-fullscreen')
+    // check for webkit
+    if (typeof videoPlayer.webkitEnterFullscreen === 'function') {
+      // if playerfullscreen classlist contains temp class
+      if (this.classList.contains('enter-fullscreen')) {
+        // go fullscreen
+        mainPlayerWrap.webkitRequestFullScreen()
+        // set video wrap to take entire view width
+        mainPlayerWrap.style.width = '100vw'
+      } else {
+        // otherwise cancel fullscreen
+        document.webkitCancelFullScreen()
+      }
+      // check for moz
+    } else if (typeof videoPlayer.mozRequestFullScreen() === 'function') {
+      // if playerfullscreen classlist contains temp class
+      if (this.classList.contains('enter-fullscreen')) {
+        // go fullscreen
+        mainPlayerWrap.mozRequestFullScreen()
+      } else {
+        // otherwise cancel fullscreen
+        document.mozCancelFullScreen()
+      }
+      // otherwise display alert that fullscreen isnt supported
+    } else {
+      window.alert('Browser does not support fullscreen.')
+    }
+  })
 
   // seek bar event listener (change)
   playerBar.addEventListener('change', () => {
