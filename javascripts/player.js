@@ -1,6 +1,7 @@
-// iife
-(() => {
+(() => { // start iffe
   'use strict'
+  // keys
+
   // store player and all buttons/inputs in consts
   const mainPlayerWrap = document.querySelector('.main__player-wrap')
   const playerButtonsWrap = document.querySelector('.player__buttons')
@@ -17,9 +18,59 @@
   const playerBarFill = document.querySelector('.player__bar-fill')
   const playerBarBuffer = document.querySelector('.player__bar-buffer')
   const playerToggleSubs = document.querySelector('.btn__subtitles')
-  const playerSubtitles = videoPlayer.textTracks[0]
-  const arraySubtitleSpans = document.querySelectorAll('.transcript__sentence')
+  const playerSubtitles = videoPlayer.textTracks
   const playerTimeSpan = document.querySelector('.player__time')
+  const transcriptOutput = document.querySelector('.main__transcript')
+  console.log(transcriptOutput)
+
+// TRANSCRIPT
+  // CUE DATA
+  const cueData = [
+    { 'cueStart': '0.240', 'cueEnd': '4.130', 'cueText': 'Now that we\'ve looked at the architecture of the internet, let\'s see how you might ' },
+    { 'cueStart': '4.130', 'cueEnd': '7.535', 'cueText': 'connect your personal devices to the internet inside your house. ' },
+    { 'cueStart': '7.535', 'cueEnd': '11.270', 'cueText': 'Well there are many ways to connect to the internet, and ' },
+    { 'cueStart': '11.270', 'cueEnd': '13.960', 'cueText': 'most often people connect wirelessly. ' },
+    { 'cueStart': '13.960', 'cueEnd': '17.940', 'cueText': 'Let\'s look at an example of how you can connect to the internet. ' },
+    { 'cueStart': '17.940', 'cueEnd': '22.370', 'cueText': 'If you live in a city or a town, you probably have a coaxial cable for ' },
+    { 'cueStart': '22.370', 'cueEnd': '26.880', 'cueText': 'cable Internet, or a phone line if you have DSL, running to the outside of ' },
+    { 'cueStart': '26.880', 'cueEnd': '30.920', 'cueText': 'your house, that connects you to the Internet Service Provider, or ISP. ' },
+    { 'cueStart': '32.920', 'cueEnd': '34.730', 'cueText': 'If you live far out in the country, you\'ll more like have ' },
+    { 'cueStart': '34.730', 'cueEnd': '39.430', 'cueText': 'a dish outside your house, connecting you wirelessly to your closest ISP, or ' },
+    { 'cueStart': '39.430', 'cueEnd': '41.190', 'cueText': 'you might also use the telephone system. ' },
+    { 'cueStart': '41.190', 'cueEnd': '46.300', 'cueText': 'Whether a wire comes straight from the ISP hookup outside your house, or ' },
+    { 'cueStart': '46.300', 'cueEnd': '49.270', 'cueText': 'it travels over radio waves from your roof, ' },
+    { 'cueStart': '49.270', 'cueEnd': '53.760', 'cueText': 'the first stop a wire will make once inside your house, is at your modem. ' },
+    { 'cueStart': '53.760', 'cueEnd': '57.780', 'cueText': 'A modem is what connects the internet to your network at home. ' },
+    { 'cueStart': '57.780', 'cueEnd': '60', 'cueText': 'A few common residential modems are DSL or' }
+  ]
+  // create transcript spans
+  let arrangeTranscript = () => {
+    let masterSpan
+    for (let i = 0; i < cueData.length; i++) {
+      masterSpan = document.createElement('span')
+      masterSpan.cue = cueData[i]
+      masterSpan.textContent = cueData[i].cueText
+      masterSpan.classList.add('transcript__span')
+      transcriptOutput.appendChild(masterSpan)
+    }
+  }
+  // call it
+  arrangeTranscript()
+  // select all spans & store in variable
+  const playerTranscriptSpans = document.querySelectorAll('.transcript__span')
+  console.log(playerTranscriptSpans)
+  // transcript highlighting and clicking
+  for (let i = 0; i < playerTranscriptSpans.length; i++) {
+    playerTranscriptSpans[i].addEventListener('click', (e) => {
+      console.log('click')
+      videoPlayer.currentTime = e.target.cue.cueStart
+      // console.log(videoPlayer.currentTime)
+      // console.log(this.target)
+      // console.log(this.target.cue.cueStart)
+      videoPlayer.play()
+      changePlayIcon()
+    })
+  }
 
   /*
   + remove default controls with JS
@@ -27,7 +78,10 @@
   + browser will use default controls
   */
   videoPlayer.removeAttribute('controls')
+  // set subs to hidden immediately
+  playerSubtitles.mode = 'hidden'
 
+// FUNCTIONS
   // change play button icon
   let changePlayIcon = () => {
     if (!videoPlayer.paused) {
@@ -53,6 +107,7 @@
     }
   }
 
+// EVENT LISTENERS
   // play & pause click event on play button
   playerPlay.addEventListener('click', () => {
     // call playVideo on play button click
@@ -170,7 +225,19 @@
       return `0:${Math.floor(num % 60)}`
     }
     // set time content
-    playerTimeSpan.textContent = `${roundTwoDecimals(videoPlayer.currentTime)} / ${roundTwoDecimals(videoPlayer.duration)}`
+    playerTimeSpan.textContent = `${roundTwoDecimals(videoPlayer.currentTime)}
+     / ${roundTwoDecimals(videoPlayer.duration)}`
+
+     // set transcript highlighting
+    cueData.forEach((element, index) => {
+      if (videoPlayer.currentTime >= element.cueStart &&
+        videoPlayer.currentTime <= element.cueEnd) {
+        transcriptOutput.children[index].classList.add('highlighted')
+        transcriptOutput.children[index].scrollIntoView()
+      } else {
+        transcriptOutput.children[index].classList.remove('highlighted')
+      }
+    })
   }, false)
 
   // buffer functionality
@@ -219,8 +286,6 @@
   }, false)
 
   // subtitles
-  // set subs to hidden immediately
-  playerSubtitles.mode = 'hidden'
   // on subtitle button click
   playerToggleSubs.addEventListener('click', () => {
     // if subs arent hidden
@@ -254,50 +319,4 @@
   mainPlayerWrap.addEventListener('mouseleave', () => {
     playerButtonsWrap.classList.add('player__buttons--hidden')
   }, false)
-
-  // transcript highlighting, on cue change
-  playerSubtitles.addEventListener('cuechange', () => {
-    /*
-    + yes, I could shorten the following to one let but
-    + wanted to show clearly that these are two
-    + different things
-    */
-    // grab the active cue list
-    let activeCueList = playerSubtitles.activeCues
-    // grab the first active cue in the list
-    let activeCue = activeCueList[0]
-    // grab the ID of the active cue
-    let activeCueIndex = activeCue.id
-    // highlight the span that corresponds w/ active cue ID
-    let highlightCurrentCue = () => {
-      arraySubtitleSpans[activeCueIndex - 1].classList.add('highlighted')
-      arraySubtitleSpans[activeCueIndex - 1].scrollIntoView()
-    }
-    highlightCurrentCue()
-    // and remove highlighted class on cue exit
-    activeCue.onexit = () => {
-      arraySubtitleSpans[activeCueIndex - 1].classList.remove('highlighted')
-    }
-  }, false)
-  // add transcript click jump functionality
-  for (let i = 0; i < arraySubtitleSpans.length; i++) {
-    // set a data attr to each span
-    arraySubtitleSpans[i].setAttribute('data-index', i)
-    // set event listener on each span element to listen for click
-    arraySubtitleSpans[i].addEventListener('click', function () {
-      /*
-      + on click, grab the 'data-index' attr (a number)
-      + from the particular span clicked
-      + and pass it into the index of the cues[] array
-      + which is part of the playerSubtitles, or textTrack[0]
-      + which was grabbed and stored in a const named playerSubtitles
-      + at the to of the script
-      + AND THEN, store all of that in a let called clickedSpanCue
-      + clickedSpanCue holds the CUE that corresponds to the clicked span's
-      + 'data-index' attribute.
-      */
-      let clickedSpanCue = playerSubtitles.cues[arraySubtitleSpans[i].getAttribute('data-index')]
-      videoPlayer.currentTime = clickedSpanCue.startTime
-    }, false)
-  }
-})()
+})() // end iffe
