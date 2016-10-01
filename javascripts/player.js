@@ -105,14 +105,6 @@
     }
   }
 
-  // listen for space on video focus
-  let spacePressed = () => {
-    if (window.KeyboardEvent.key === keySpace && videoPlayer.activeElement) {
-      playVideo()
-    }
-  }
-  spacePressed()
-
   // detect fullscreen support & use proper method
   let enterFullscreen = (el) => {
     if (el.requestFullscreen) {
