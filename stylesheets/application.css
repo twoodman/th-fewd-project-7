@@ -80,7 +80,7 @@ footer {
   text-align: center;
   background: #111111; }
   footer a {
-    font-size: 20px;
+    font-size: 30px;
     text-decoration: none;
     color: #ffffff; }
     footer a:hover {
@@ -111,7 +111,7 @@ video {
     top: 0;
     left: 0;
     width: 0%;
-    height: 100%;
+    height: 5px;
     background: #1f4788;
     z-index: 500; }
   .bar__wrap .player__bar-buffer {
@@ -119,16 +119,15 @@ video {
     top: 0;
     left: 0;
     width: 0%;
-    height: 100%;
+    height: 5px;
     background: rgba(0, 0, 0, 0.5);
     z-index: 499; }
 
 .player__bar {
   position: absolute;
-  top: 0;
   z-index: 501;
   width: 100%;
-  height: 100%;
+  height: 5px;
   background: transparent;
   margin: 0;
   border: none;
@@ -137,6 +136,8 @@ video {
   .player__bar::-moz-range-track {
     border: inherit;
     background: transparent; }
+  .player__bar.firefox-fix {
+    height: 3px; }
   .player__bar::-ms-track {
     border: inherit;
     color: transparent;
@@ -152,6 +153,9 @@ video {
     width: 20px;
     background: #ffffff; }
   .player__bar::-moz-range-thumb {
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
     -webkit-appearance: none;
     border: none;
     height: 5px;
@@ -245,8 +249,8 @@ video {
   .player__buttons button {
     display: inline-block;
     background: transparent;
-    width: 20px;
-    height: 20px;
+    width: 60px;
+    height: 60px;
     margin: 5px;
     padding: 0;
     border: none; }
@@ -311,7 +315,7 @@ video {
   width: 100%; }
   .main__transcript span {
     display: block;
-    font-size: 16px;
+    font-size: 28px;
     line-height: 1.2em;
     padding: 10px;
     cursor: pointer;
