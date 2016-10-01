@@ -1,7 +1,7 @@
 (() => { // start iffe
   'use strict'
   // keys
-
+  const keySpace = 32
   // store player and all buttons/inputs in consts
   const mainPlayerWrap = document.querySelector('.main__player-wrap')
   const playerButtonsWrap = document.querySelector('.player__buttons')
@@ -18,10 +18,10 @@
   const playerBarFill = document.querySelector('.player__bar-fill')
   const playerBarBuffer = document.querySelector('.player__bar-buffer')
   const playerToggleSubs = document.querySelector('.btn__subtitles')
-  const playerSubtitles = videoPlayer.textTracks
   const playerTimeSpan = document.querySelector('.player__time')
   const transcriptOutput = document.querySelector('.main__transcript')
-  console.log(transcriptOutput)
+  const playerSubtitles = videoPlayer.textTracks['0']
+  console.log(playerSubtitles)
 
 // TRANSCRIPT
   // CUE DATA
@@ -58,11 +58,9 @@
   arrangeTranscript()
   // select all spans & store in variable
   const playerTranscriptSpans = document.querySelectorAll('.transcript__span')
-  console.log(playerTranscriptSpans)
   // transcript highlighting and clicking
   for (let i = 0; i < playerTranscriptSpans.length; i++) {
     playerTranscriptSpans[i].addEventListener('click', (e) => {
-      console.log('click')
       videoPlayer.currentTime = e.target.cue.cueStart
       // console.log(videoPlayer.currentTime)
       // console.log(this.target)
@@ -104,6 +102,40 @@
       videoPlayer.pause()
       // and again change the button icons
       changePlayIcon()
+    }
+  }
+
+  // listen for space on video focus
+  let spacePressed = () => {
+    if (window.KeyboardEvent.key === keySpace && videoPlayer.activeElement) {
+      playVideo()
+    }
+  }
+  spacePressed()
+
+  // detect fullscreen support & use proper method
+  let enterFullscreen = (el) => {
+    if (el.requestFullscreen) {
+      el.requestFullscreen()
+    } else if (el.mozRequestFullScreen) {
+      el.mozRequestFullScreen()
+    } else if (el.webkitRequestFullscreen) {
+      el.webkitRequestFullScreen()
+    } else if (el.msRequestFullscreen) {
+      el.msRequestFullscreen()
+    } else if (!el.requestFullscreen || !el.mozRequestFullScreen || !el.webkitRequestFullScreen || !el.msRequestFullscreen) {
+      window.alert('Your browser does not support fullscreen.')
+    }
+  }
+
+  // detect exit fullscreen support & use proper method
+  let exitFullscreen = (el) => {
+    if (document.exitFullscreen) {
+      document.exitFullscreen()
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen()
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen()
     }
   }
 
@@ -173,33 +205,28 @@
 
   // fullscreen button functionality
   playerFullscreen.addEventListener('click', function () {
-    // on click, toggle temp class
-    this.classList.toggle('enter-fullscreen')
-    // check for webkit
-    if (typeof videoPlayer.webkitEnterFullscreen === 'function') {
-      // if playerfullscreen classlist contains temp class
-      if (this.classList.contains('enter-fullscreen')) {
-        // go fullscreen
-        mainPlayerWrap.webkitRequestFullScreen()
-        // set video wrap to take entire view width
-        mainPlayerWrap.style.width = '100vw'
-      } else {
-        // otherwise cancel fullscreen
-        document.webkitCancelFullScreen()
-      }
-      // check for moz
-    } else if (typeof videoPlayer.mozRequestFullScreen() === 'function') {
-      // if playerfullscreen classlist contains temp class
-      if (this.classList.contains('enter-fullscreen')) {
-        // go fullscreen
-        mainPlayerWrap.mozRequestFullScreen()
-      } else {
-        // otherwise cancel fullscreen
-        document.mozCancelFullScreen()
-      }
-      // otherwise display alert that fullscreen isnt supported
+    if (playerFullscreen.classList.contains('enter-fullscreen')) {
+      playerFullscreen.classList.remove('enter-fullscreen')
+      exitFullscreen(mainPlayerWrap)
     } else {
-      window.alert('Browser does not support fullscreen.')
+      playerFullscreen.classList.add('enter-fullscreen')
+      enterFullscreen(mainPlayerWrap)
+    }
+  })
+
+  // on subtitle button click
+  playerToggleSubs.addEventListener('click', () => {
+    // if subs arent hidden
+    if (playerSubtitles.mode !== 'hidden') {
+      // hide them
+      playerSubtitles.mode = 'hidden'
+      // change sub button to reflect state
+      playerToggleSubs.classList.remove('btn__subtitles--showing')
+    } else {
+      // else show them
+      playerSubtitles.mode = 'showing'
+      // and change sub button to reflect state
+      playerToggleSubs.classList.add('btn__subtitles--showing')
     }
   })
 
@@ -283,23 +310,6 @@
   playerBar.addEventListener('mouseup', () => {
     videoPlayer.play()
     changePlayIcon()
-  }, false)
-
-  // subtitles
-  // on subtitle button click
-  playerToggleSubs.addEventListener('click', () => {
-    // if subs arent hidden
-    if (playerSubtitles.mode !== 'hidden') {
-      // hide them
-      playerSubtitles.mode = 'hidden'
-      // change sub button to reflect state
-      playerToggleSubs.classList.remove('btn__subtitles--showing')
-    } else {
-      // else show them
-      playerSubtitles.mode = 'showing'
-      // and change sub button to reflect state
-      playerToggleSubs.classList.add('btn__subtitles--showing')
-    }
   }, false)
 
   // show controls for 0.5 secs on window load
