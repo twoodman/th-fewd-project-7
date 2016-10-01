@@ -56,7 +56,6 @@ browsers~~
 - ✔️ ~~Creative and thoughtful responsive design. I did this by:~~
   - ✔️ ~~Keeping browser focus border rather than try and remove
   that~~
-  - ✔️ ~~Making the buttons easy to click/tap (BIIIIIIIIG)~~
   - ✔️ ~~Adding a mute button?~~
   - ✔️ ~~Resetting video when it reaches the end~~
   - ✔️ ~~Making un-highlighted text faded and highlighted text dark/obvious~~
