@@ -321,4 +321,12 @@
   mainPlayerWrap.addEventListener('mouseleave', () => {
     playerButtonsWrap.classList.add('player__buttons--hidden')
   }, false)
+
+// SOME HACKY STUFF
+  // check for ff
+  const isFirefox = typeof InstallTrigger !== 'undefined'
+  // fix firefox range input thumb being two pixels off
+  if (isFirefox) {
+    playerBar.classList.add('firefox-fix')
+  }
 })() // end iffe
