@@ -38,16 +38,17 @@ browsers~~
   - ✔️ ~~Use JS to listen for changes and apply highlight to appropriate sentence~~
   - ✔️ ~~Use captions.vtt file to see times at which words are spoken in video~~
   - ✔️ ~~Make sure to remove default prop on track tag~~
-- Note which browsers tested on
-  - 🔧 Microsoft Edge 38.14 - spans don't remove class when another span is clicked
-  - 🔧 Firefox 47.0 - same as Edge
-  - ✔️ Chrome 53.0
+- Note which browsers tested on:
+  - ✔️ Firefox 49.0.1 - OS X Sierra
+    - has issues with a lot of stuff and should generally just disappear as a browser 😠
+  - ✔️ Chrome 53.0 - OS X Sierra
+  - ✔️ Safari 10.0 - OS X Sierra
 - ✔️~~Validate HTML/CSS/JS~~
   - ✔️ HTML: no errors
   - ✔️ CSS: no errors
   - ✔️ JS: no errors as far as I can tell. Gave me 'too many errors', but they were all for missing semicolons. I use the [standardjs](http://standardjs.com/) style guide, which uses no semicolons.
 - ✔️ ~~Check for issues/Validate JS (JSHint)~~
-  - ✔️ ~~see above!~~
+  - ✔️ ~~see above~~
 
 
 ##### Exceeds Expectations:
