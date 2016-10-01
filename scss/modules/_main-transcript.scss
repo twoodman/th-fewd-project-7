@@ -3,6 +3,9 @@
   height: 200px;
   width: 100%;
   span {
+    @include query-550 {
+      font-size: $base-font-size + 4;
+    }
     display: block;
     font-size: $base-font-size + 12;
     line-height: 1.2em;

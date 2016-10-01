@@ -320,6 +320,9 @@ video {
     padding: 10px;
     cursor: pointer;
     color: #afafaf; }
+    @media (min-width: 550px) {
+      .main__transcript span {
+        font-size: 20px; } }
     .main__transcript span:hover {
       color: #4b77be; }
     .main__transcript span.highlighted {
