@@ -252,7 +252,6 @@
       if (videoPlayer.currentTime >= element.cueStart &&
         videoPlayer.currentTime <= element.cueEnd) {
         transcriptOutput.children[index].classList.add('highlighted')
-        transcriptOutput.children[index].scrollIntoView()
       } else {
         transcriptOutput.children[index].classList.remove('highlighted')
       }
