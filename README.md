@@ -15,7 +15,9 @@
 
 
 ##### Tested In:
-
+- Firefox 49.0.1 - OS X Sierra
+- Chrome 53.0 - OS X Sierra
+- Safari 10.0 - OS X Sierra
 
 
 ##### To Do:
